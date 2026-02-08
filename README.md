@@ -9,7 +9,7 @@
   </picture>
 </a>
 
-_The visual editor for React_
+_Create your own AI page builder_
 
 [Documentation](https://puckeditor.com/docs?utm_source=readme&utm_medium=code&utm_campaign=repo&utm_contents=docs_link) • [Demo](https://demo.puckeditor.com/edit?utm_source=readme&utm_medium=code&utm_campaign=repo&utm_contents=demo_link) • [Discord](https://discord.gg/V9mDAhuxyZ) • [Contributing](https://github.com/puckeditor/puck/blob/main/CONTRIBUTING.md)
 
@@ -34,15 +34,15 @@ Puck is also [licensed under MIT](https://github.com/puckeditor/puck?tab=MIT-1-o
 Install the package:
 
 ```sh
-npm i @measured/puck --save # or npx create-puck-app my-app
+npm i @puckeditor/core --save # or npx create-puck-app my-app
 ```
 
 Render the editor:
 
 ```jsx
 // Editor.jsx
-import { Puck } from "@measured/puck";
-import "@measured/puck/puck.css";
+import { Puck } from "@puckeditor/core";
+import "@puckeditor/core/puck.css";
 
 // Create Puck component config
 const config = {
@@ -76,8 +76,8 @@ Render the page:
 
 ```jsx
 // Page.jsx
-import { Render } from "@measured/puck";
-import "@measured/puck/puck.css";
+import { Render } from "@puckeditor/core";
+import "@puckeditor/core/puck.css";
 
 export function Page() {
   return <Render config={config} data={data} />;
