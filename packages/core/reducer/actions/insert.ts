@@ -20,6 +20,7 @@ export function insertAction<UserData extends Data>(
       props: {
         ...(appStore.config.components[action.componentType].defaultProps ||
           {}),
+        ...(action.data?.props || {}),
         id,
       },
     },
