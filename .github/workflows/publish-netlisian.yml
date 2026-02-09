@@ -1,0 +1,33 @@
+name: Publish osamu release
+on:
+  push:
+    branches:
+      - "osamu"
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 20
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: yarn --frozen-lockfile
+
+      - name: Build all packages
+        run: yarn build
+
+      - name: Release to osamu
+        run: yarn release:osamu
+        env:
+          OSAMU_TAG: osamu
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+    timeout-minutes: 15

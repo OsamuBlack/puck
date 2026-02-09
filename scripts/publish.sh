@@ -1,14 +1,19 @@
-cd packages/core && npm publish --access public --tag $1
-cd ../../
+#!/bin/bash
 
-cd packages/field-contentful && npm publish --access public --tag $1
-cd ../../
+# 1. Get the tag (defaults to netlisian)
+TAG=${1:-netlisian}
 
-cd packages/plugin-emotion-cache && npm publish --access public --tag $1
-cd ../../
+echo "🚀 Starting local canary deploy with tag: $TAG"
 
-cd packages/plugin-heading-analyzer && npm publish --access public --tag $1
-cd ../../
+# 2. Build the project first
+yarn build
 
-cd packages/create-puck-app && npm run removeGitignore && npm publish --access public --tag $1 && npm run restoreGitignore
-cd ../../
+# 3. Use Lerna to version and publish all packages at once
+# This replaces all your manual 'cd packages/xxx && npm publish' lines
+npx lerna publish --canary \
+  --preid $TAG \
+  --dist-tag $TAG \
+  --force-publish \
+  --yes
+
+echo "✅ Published successfully!"

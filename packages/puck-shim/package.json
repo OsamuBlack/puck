@@ -1,0 +1,18 @@
+{
+  "name": "@puckeditor/core",
+  "version": "0.21.1",
+  "description": "Compatibility shim that re-exports @netlisian/puck",
+  "private": false,
+  "main": "index.cjs",
+  "module": "index.mjs",
+  "types": "index.d.ts",
+  "files": [
+    "index.cjs",
+    "index.mjs",
+    "index.d.ts"
+  ],
+  "dependencies": {
+    "@netlisian/puck": "^0.21.1"
+  },
+  "license": "MIT"
+}
