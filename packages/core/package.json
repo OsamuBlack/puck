@@ -1,6 +1,6 @@
 {
   "name": "@netlisian/puck",
-  "version": "0.21.1",
+  "version": "0.21.2-netlisian.1893+578cd068",
   "description": "The open-source visual editor for React",
   "author": "Chris Villa <chris@puckeditor.com>",
   "repository": "puckeditor/puck",
@@ -133,5 +133,6 @@
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
-  }
+  },
+  "gitHead": "578cd068ce978acecd8364cd677f912c52b4aec4"
 }
