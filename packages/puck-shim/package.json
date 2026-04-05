@@ -1,6 +1,6 @@
 {
   "name": "@puckeditor/core",
-  "version": "0.21.1",
+  "version": "0.21.2",
   "description": "Compatibility shim that re-exports @netlisian/puck",
   "private": false,
   "main": "index.cjs",

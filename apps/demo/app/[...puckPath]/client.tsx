@@ -6,6 +6,7 @@ import config from "../../config";
 import { useDemoData } from "../../lib/use-demo-data";
 import { useEffect, useState } from "react";
 import { Type } from "lucide-react";
+import "@/core/dist/index.css";
 
 export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
   const metadata = {
@@ -46,7 +47,7 @@ export function Client({ path, isEdit }: { path: string; isEdit: boolean }) {
           fieldTransforms={{
             userField: ({ value }) => value, // Included to check types
           }}
-          _experimentalFullScreenCanvas={false}
+          _experimentalVirtualization
           overrides={{
             fieldTypes: {
               // Example of user field provided via overrides

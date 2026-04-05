@@ -8,6 +8,7 @@ import { componentKey } from "../../index";
 import { type Components } from "../../types";
 import TemplateComponent, { TemplateProps } from "./Template";
 import { LayoutList } from "lucide-react";
+import { templateRenderFields } from "./render-fields";
 
 const usePuck = createUsePuck();
 
@@ -114,9 +115,7 @@ export const TemplateInternal: ComponentConfig<TemplateProps> = {
         );
       },
     },
-    children: {
-      type: "slot",
-    },
+    ...templateRenderFields,
   },
   defaultProps: {
     template: "example_1",
