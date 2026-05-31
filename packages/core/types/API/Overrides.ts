@@ -12,6 +12,7 @@ export const overrideKeys = [
   "fields",
   "fieldLabel",
   "drawer",
+  "drawerContainer",
   "drawerItem",
   "componentOverlay",
   "outline",
@@ -30,6 +31,8 @@ export type Overrides<UserConfig extends Config = Config> = OverridesGeneric<{
     label?: string;
     children: ReactNode;
     parentAction: ReactNode;
+    moveUpAction: ReactNode;
+    moveDownAction: ReactNode;
   }>;
   headerActions: RenderFunc<{ children: ReactNode }>;
   preview: RenderFunc;
@@ -47,9 +50,17 @@ export type Overrides<UserConfig extends Config = Config> = OverridesGeneric<{
     className?: string;
   }>;
   components: RenderFunc; // DEPRECATED
-  componentItem: RenderFunc<{ children: ReactNode; name: string }>; // DEPRECATED
+  componentItem: RenderFunc<{ children: ReactNode; name: string; icon?: ReactNode }>; // DEPRECATED
   drawer: RenderFunc;
-  drawerItem: RenderFunc<{ children: ReactNode; name: string }>;
+  drawerContainer: RenderFunc<{ 
+    children: ReactNode; 
+    className: string; 
+    ref: any; 
+    "data-puck-dnd": string;
+    "data-puck-drawer": boolean;
+    "data-puck-dnd-void": boolean;
+  }>;
+  drawerItem: RenderFunc<{ children: ReactNode; name: string; icon?: ReactNode }>;
   iframe: RenderFunc<{ children: ReactNode; document?: Document }>;
   outline: RenderFunc;
   componentOverlay: RenderFunc<{

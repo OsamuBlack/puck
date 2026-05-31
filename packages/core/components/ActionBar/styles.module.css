@@ -99,6 +99,10 @@
   margin: 0;
 }
 
+.ActionBar-action:disabled {
+  cursor: default;
+  color: var(--puck-color-grey-05);
+}
 .ActionBar-separator {
   background: var(--puck-color-grey-05);
   margin-inline: 4px;

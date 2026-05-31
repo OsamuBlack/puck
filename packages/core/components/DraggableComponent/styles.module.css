@@ -50,7 +50,7 @@
 .DraggableComponent--hover
   > .DraggableComponent-overlayWrapper
   > .DraggableComponent-overlay {
-  background: var(--overlay-background);
+  filter: brightness(1.1);
   outline: 2px var(--puck-color-azure-09) solid;
 }
 
@@ -58,6 +58,7 @@
   > .DraggableComponent-overlayWrapper
   > .DraggableComponent-overlay {
   outline-color: var(--puck-color-azure-07);
+  outline-style: dashed;
 }
 
 /* Won't work in FF */

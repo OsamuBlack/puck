@@ -204,6 +204,26 @@ const Layer = forwardRef(function Layer(
   );
   const containsZone = node.childZones.length > 0;
 
+  // Icon support from Doc 2
+  const config = useAppStore((s) => s.config);
+  const showComponentIconsInOutline = useAppStore(
+    (s) => s.showComponentIconsInOutline
+  );
+  const componentIcon = config.components[node.componentType]?.icon;
+
+  const getComponentIcon = () => {
+    if (showComponentIconsInOutline && componentIcon) {
+      return componentIcon;
+    }
+    if (
+      node.componentType === "Text" ||
+      node.componentType === "Heading"
+    ) {
+      return <Type size="16" />;
+    }
+    return <LayoutGrid size="16" />;
+  };
+
   const setItemSelector = useCallback(
     (itemSelector: ItemSelector | null) => {
       dispatch({ type: "setUi", ui: { itemSelector } });
@@ -261,12 +281,7 @@ const Layer = forwardRef(function Layer(
           )}
           <div className={getClassNameLayer("title")}>
             <div className={getClassNameLayer("icon")}>
-              {node.componentType === "Text" ||
-              node.componentType === "Heading" ? (
-                <Type size="16" />
-              ) : (
-                <LayoutGrid size="16" />
-              )}
+              {getComponentIcon()}
             </div>
             <div className={getClassNameLayer("name")}>{node.label}</div>
           </div>

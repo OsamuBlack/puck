@@ -1,7 +1,7 @@
-import { CSSProperties, ElementType, Ref } from "react";
+import { CSSProperties, ComponentPropsWithRef, ElementType } from "react";
 import { DragAxis } from "../../types";
 
-export type DropZoneProps = {
+export type DropZoneProps<T extends ElementType = "div"> = {
   zone: string;
   allow?: string[];
   disallow?: string[];
@@ -9,6 +9,5 @@ export type DropZoneProps = {
   minEmptyHeight?: CSSProperties["minHeight"] | number;
   className?: string;
   collisionAxis?: DragAxis;
-  as?: ElementType;
-  ref?: Ref<any>;
-};
+  as?: T;
+} & Omit<ComponentPropsWithRef<T>, "zone" | "children" | "style" | "className" | "ref">;

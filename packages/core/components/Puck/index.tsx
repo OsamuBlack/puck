@@ -83,6 +83,7 @@ type PuckProps<
   headerPath?: string;
   viewports?: Viewports;
   iframe?: IframeConfig;
+  showComponentIconsInOutline?: boolean;
   dnd?: {
     disableAutoScroll?: boolean;
   };
@@ -122,6 +123,7 @@ function PuckProvider<
     overrides,
     viewports = defaultViewports,
     iframe: _iframe,
+    showComponentIconsInOutline = true,
     initialHistory: _initialHistory,
     metadata,
     onAction,
@@ -262,6 +264,7 @@ function PuckProvider<
         overrides: loadedOverrides,
         viewports,
         iframe,
+        showComponentIconsInOutline,
         _experimentalFullScreenCanvas: !!_experimentalFullScreenCanvas,
         _experimentalVirtualization: !!_experimentalVirtualization,
         onAction,
@@ -277,6 +280,7 @@ function PuckProvider<
       loadedOverrides,
       viewports,
       iframe,
+      showComponentIconsInOutline,
       _experimentalFullScreenCanvas,
       _experimentalVirtualization,
       onAction,

@@ -1,4 +1,4 @@
-import type { JSX, ReactNode } from "react";
+import type { ElementType, JSX, ReactNode } from "react";
 import { BaseField, Field, Fields } from "./Fields";
 import { ComponentData, ComponentMetadata, RootData } from "./Data";
 
@@ -14,7 +14,7 @@ import {
   WithDeepSlots,
 } from "./Internal";
 
-export type SlotComponent = (props?: Omit<DropZoneProps, "zone">) => ReactNode;
+export type SlotComponent<T extends ElementType = "div"> = (props?: Omit<DropZoneProps<T>, "zone">) => ReactNode;
 
 export type PuckComponent<Props> = (
   props: WithId<
@@ -48,6 +48,7 @@ type ComponentConfigInternal<
 > = {
   render: PuckComponent<RenderProps>;
   label?: string;
+  icon?: React.ReactNode;
   defaultProps?: FieldProps;
   fields?: Fields<FieldProps, UserField>;
   permissions?: Partial<Permissions>;

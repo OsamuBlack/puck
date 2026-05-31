@@ -304,6 +304,7 @@ export const DropZoneEdit = forwardRef<HTMLDivElement, DropZoneProps>(
       minEmptyHeight: userMinEmptyHeight = "128px",
       collisionAxis,
       as,
+      ...restProps
     },
     userRef
   ) {
@@ -521,6 +522,7 @@ export const DropZoneEdit = forwardRef<HTMLDivElement, DropZoneProps>(
               : style?.backgroundColor,
           } as CSSProperties
         }
+        {...restProps}
       >
         {shouldVirtualizeItems ? (
           <VirtualizedDropZone
@@ -602,7 +604,7 @@ export const DropZoneRenderPure = (props: DropZoneProps) => (
 );
 
 const DropZoneRender = forwardRef<HTMLDivElement, DropZoneProps>(
-  function DropZoneRenderInternal({ className, style, zone, as }, ref) {
+  function DropZoneRenderInternal({ className, style, zone, as, allow, disallow, minEmptyHeight, collisionAxis, ...restProps }, ref) {
     const ctx = useContext(dropZoneContext);
     const { areaId = "root" } = ctx || {};
     const { config, data, metadata } = useContext(renderContext);
@@ -630,7 +632,7 @@ const DropZoneRender = forwardRef<HTMLDivElement, DropZoneProps>(
       content = setupZone(data, zoneCompound).zones[zoneCompound];
     }
     return (
-      <El className={className} style={style} ref={ref}>
+      <El className={className} style={style} ref={ref} {...restProps}>
         {content.map((item) => {
           const Component = config.components[item.type];
           if (Component) {

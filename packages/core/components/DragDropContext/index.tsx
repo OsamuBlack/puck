@@ -365,9 +365,26 @@ const DragDropContextClient = ({
             if (event.canceled || target?.type === "void") {
               zoneStore.setState({ previewIndex: {} });
 
-              dragListeners.dragend?.forEach((fn) => {
-                fn(event, manager);
-              });
+              // Finalise the drag
+              if (thisPreview) {
+                zoneStore.setState({ previewIndex: {} });
+
+                if (thisPreview.type === "insert") {
+                  insertComponent(
+                    thisPreview.componentType,
+                    thisPreview.zone,
+                    thisPreview.index,
+                    appStore
+                  );
+                } else if (initialSelector.current) {
+                  moveComponent(
+                    thisPreview.props.id,
+                    initialSelector.current,
+                    thisPreview,
+                    appStore
+                  );
+                }
+              }
 
               dispatch({
                 type: "setUi",
@@ -375,6 +392,10 @@ const DragDropContextClient = ({
                   itemSelector: null,
                   isDragging: false,
                 },
+              });
+
+              dragListeners.dragend?.forEach((fn) => {
+                fn(event, manager);
               });
 
               return;

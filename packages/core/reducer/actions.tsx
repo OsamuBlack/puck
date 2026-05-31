@@ -6,6 +6,7 @@ export type InsertAction = {
   componentType: string;
   destinationIndex: number;
   destinationZone: string;
+  data?: ComponentData;
   id?: string;
 };
 

@@ -80,6 +80,7 @@ export type AppStore<
   status: Status;
   setStatus: (status: Status) => void;
   iframe: IframeConfig;
+  showComponentIconsInOutline: boolean;
   _experimentalFullScreenCanvas: boolean;
   _experimentalVirtualization: boolean;
   selectedItem?: G["UserData"]["content"][0] | null;
@@ -125,6 +126,7 @@ export const createAppStore = (initialAppStore?: Partial<AppStore>) =>
       },
       status: "LOADING",
       iframe: {},
+      showComponentIconsInOutline: true,
       _experimentalFullScreenCanvas: false,
       _experimentalVirtualization: false,
       metadata: {},
