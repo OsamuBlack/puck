@@ -618,7 +618,6 @@ export const DraggableComponent = ({
       if (hover || indicativeHover || isSelected) {
         scheduleSync();
         setIsVisible(true);
-        setThisWasDragging(false);
       } else {
         setIsVisible(false);
       }
@@ -633,6 +632,7 @@ export const DraggableComponent = ({
         // Sync immediately, to avoid a flash of the overlay in the wrong place.
         sync();
         setDragFinished(true);
+        setThisWasDragging(false);
       });
     } else {
       setDragFinished(false);
